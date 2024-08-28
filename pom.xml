@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>my-new-project</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium-java.version>4.21.0</selenium-java.version>
+        <testng.version>7.10.2</testng.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
+        <allure-testng.version>2.27.0</allure-testng.version>
+        <owner.version>1.0.12</owner.version>
+        <webdriver-event-listeners.version>0.6</webdriver-event-listeners.version>
+
+        <aspectj.version>1.9.22.1</aspectj.version>
+        <assertj-core.version>3.26.0</assertj-core.version>
+
+        <allure-maven.version>2.12.0</allure-maven.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+
+        <seleniumGrid>false</seleniumGrid>
+        <seleniumGridUrl>http://ip:port/wd/hub</seleniumGridUrl>
+        <seleniumBrowser>chrome</seleniumBrowser>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>3.0.0-beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>${owner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.testsmith</groupId>
+            <artifactId>webdriver-event-listeners</artifactId>
+            <version>${webdriver-event-listeners.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <seleniumGrid>${seleniumGrid}</seleniumGrid>
+                        <seleniumGridUrl>${seleniumGridUrl}</seleniumGridUrl>
+                        <seleniumBrowser>${seleniumBrowser}</seleniumBrowser>
+                    </systemPropertyVariables>
+                    <includes>
+                        <include>**</include>
+                    </includes>
+                    <parallel>classes</parallel>
+                    <threadCount>4</threadCount>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>org.apache.commons:commons-collections4</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
