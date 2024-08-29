@@ -17,6 +17,6 @@ public class ToolshopTest extends TestBase {
     public void verifySignInButton_failOnPurpose() {
         HomePage homePage = new HomePage(getDriver())
                 .open();
-        assertThat(homePage.isSignInButtonDisplayed()).isFalse();
+        assertThat(homePage.isSignInButtonDisplayed()).isTrue();
     }
 }

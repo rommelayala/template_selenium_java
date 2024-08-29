@@ -10,4 +10,6 @@ public interface EnvironmentProperties extends Config {
     String username();
 
     String password();
+
+    String toto();
 }
