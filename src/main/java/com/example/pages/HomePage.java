@@ -7,14 +7,13 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends AbstractPageBase {
 
-    private final By signInButton = By.cssSelector("li>a[data-test='nav-sign-in']");
-    // getDriver().findElement(By.cssSelector("li>a[data-test='nav-sign-in]'"))
+  private final By signInButton = By.cssSelector("li>a[data-test='nav-sign-in']");
+  // getDriver().findElement(By.cssSelector("li>a[data-test='nav-sign-in]'"))
 
   public HomePage(WebDriver driver) {
     super(driver);
   }
 
-  @Step("Open the Practice Software Testing homepage")
   public HomePage open() {
     driver.get(Environment.getProperties().url());
     //Mostrar valores de un atributo
@@ -22,9 +21,7 @@ public class HomePage extends AbstractPageBase {
     return this;
   }
 
-    @Step("Is Sign In button displayed")
-    public boolean isSignInButtonDisplayed() {
-        return driver.findElement(signInButton).isDisplayed();
-    }
-
+  public boolean isSignInButtonDisplayed() {
+    return driver.findElement(signInButton).isDisplayed();
+  }
 }

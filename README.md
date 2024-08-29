@@ -37,7 +37,15 @@ This project is generated from an archetype. It exists out of TestNG, Selenium W
 
 ----------
 ## Links
-Base project www.testsmith.io [HERE ](https://www.testsmith.io/en/blog/creating-a-playwright-test-automation-project-with-maven-archetype)
+Base project www.testsmith.io [HERE ](https://www.linkedin.com/pulse/selenium-webdriver-testng-maven-archetypes-testsmith/)
+````
+mvn archetype:generate -B -DarchetypeGroupId=io.testsmith \
+                       -DarchetypeArtifactId=webdriver-testng-archetype \
+                       -DarchetypeVersion=1.4.21.0 \
+                       -DgroupId=com.example \
+                       -DartifactId=my-new-project \
+                       -Dversion=0.1-SNAPSHOT
+````
 
 Webdriver Event Listeners [HERE](https://github.com/testsmith-io/webdriver-event-listeners)
 

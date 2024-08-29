@@ -16,7 +16,7 @@ public abstract class TestBase {
     }
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         final String browser = System.getProperty("browser", "firefox");
         WebDriver originalDriver = BrowserUtil.createDriver(browser);
         driver.set(new EventFiringDecorator(
@@ -28,7 +28,7 @@ public abstract class TestBase {
     }
 
     @AfterClass
-    public void teardown() {
+    public static void teardown() {
         getDriver().quit();
     }
 
