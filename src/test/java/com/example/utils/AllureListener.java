@@ -4,12 +4,11 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.listener.TestLifecycleListener;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.TestResult;
-import com.example.testscripts.TestBase;
+import com.example.testScripts.TestBase;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
-import io.qameta.allure.listener.TestLifecycleListener;
 
 public class AllureListener implements TestLifecycleListener {
 

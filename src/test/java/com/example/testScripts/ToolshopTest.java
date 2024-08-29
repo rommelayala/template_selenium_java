@@ -1,4 +1,4 @@
-package com.example.testscripts;
+package com.example.testScripts;
 
 import com.example.pages.HomePage;
 import org.testng.annotations.Test;

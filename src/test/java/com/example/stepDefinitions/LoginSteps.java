@@ -1,7 +1,7 @@
 package com.example.stepDefinitions;
 
 import com.example.pages.HomePage;
-import com.example.testscripts.TestBase;
+import com.example.testScripts.TestBase;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 

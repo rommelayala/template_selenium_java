@@ -1,4 +1,4 @@
-package com.example.testscripts;
+package com.example.testScripts;
 
 import io.testsmith.support.listeners.*;
 import com.example.utils.BrowserUtil;
