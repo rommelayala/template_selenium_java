@@ -1,15 +1,14 @@
 # TODO:
 
-[ ] Refactoriza metodos para tener métodos genéricos de encontrar web elements  
 [ ] Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS  
 [ ] Corregir porque no se muestran mensajes del logger por consola
 [ ] Dockerizar los tests
-[ ] Crear steps genericos para web
 [ ] Crear steps genericos para rest
 [ ] Crear steps genericos para db
+[ ] Añadir try catch
 
 --------------- In progess ---------------
-
+[ ] Refactoriza metodos para tener métodos genéricos de encontrar web elements
 --------------- Features ---------------
 ✅ Integrar Cucumber  
 TENER EN CUENTA QUE ESTAMOS INTEGRANDO CUCUMBER-TESTNG  

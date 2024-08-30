@@ -11,7 +11,7 @@ public class Environment {
      * @return EnvironmentProperties
      */
     public static EnvironmentProperties getProperties() {
-        ConfigFactory.setProperty("env", System.getProperty("env", "test"));
+        ConfigFactory.setProperty("env", System.getProperty("env", "stag"));
         return ConfigCache.getOrCreate(EnvironmentProperties.class);
     }
 

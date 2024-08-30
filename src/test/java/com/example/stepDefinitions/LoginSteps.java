@@ -1,16 +1,17 @@
 package com.example.stepDefinitions;
 
-import com.example.pages.HomePage;
 import com.example.testScripts.TestBase;
+import com.example.testScripts.SeleniumSpec;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 
 public class LoginSteps {
-  private WebDriver driver = TestBase.getDriver();
-  private HomePage homePage = new HomePage(driver);
+  private SeleniumSpec seleniumSpec = new SeleniumSpec();
+
   @Given("I am on the login page")
   public void iAmOnTheLoginPage() {
 
-    homePage.open();
+    seleniumSpec.openBrowserUsingProperties();
+    // homePage.open();s
   }
 }

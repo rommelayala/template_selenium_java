@@ -1,13 +1,12 @@
-package com.example.pages;
-
-import org.openqa.selenium.WebDriver;
+package com.example.testScripts;
 
 import java.time.Duration;
+import org.openqa.selenium.WebDriver;
 
-abstract class AbstractPageBase {
+abstract class AbstractWebdriverBase {
     protected WebDriver driver;
 
-    public AbstractPageBase(WebDriver driver) {
+    public AbstractWebdriverBase(WebDriver driver) {
         this.driver = driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
