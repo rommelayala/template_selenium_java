@@ -13,7 +13,9 @@ public class BrowserUtil {
         WebDriver driver = null;
         switch (Browser.valueOf(browser.toUpperCase())) {
             case CHROME:
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("-disable-search-engine-choice-screen");
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case FIREFOX:
                 driver = new FirefoxDriver();
@@ -22,9 +24,9 @@ public class BrowserUtil {
                 driver = new EdgeDriver();
                 break;
             case CHROME_HEADLESS:
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless");
-                driver = new ChromeDriver(chromeOptions);
+                ChromeOptions chromeOptions_headless = new ChromeOptions();
+                chromeOptions_headless.addArguments("--headless");
+                driver = new ChromeDriver(chromeOptions_headless);
                 break;
             case FIREFOX_HEADLESS:
                 FirefoxOptions options = new FirefoxOptions();

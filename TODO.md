@@ -10,6 +10,14 @@
 --------------------------------------------- In progess -------------------------------------------------------
 [ ]
 --------------------------------------------- Features ---------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+✅ Corrige el default search engine en chrome
+-> chromeOptions.addArguments("-disable-search-engine-choice-screen");
+chromeOptions.addArguments("--no-default-browser-check");
+chromeOptions.addArguments("--disable-infobars");
+chromeOptions.addArguments("--disable-popup-blocking");
+chromeOptions.addArguments("--disable-notifications");
+----------------------------------------------------------------------------------------------------------------
 ✅ Refactoriza metodos para tener métodos genéricos de encontrar web elements
 ----------------------------------------------------------------------------------------------------------------
 ✅ Integrar Cucumber  

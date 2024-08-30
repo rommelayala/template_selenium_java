@@ -1,6 +1,7 @@
 package com.example.stepDefinitions;
 
 import com.example.testScripts.SeleniumSpec;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 public class LoginSteps {
@@ -11,5 +12,10 @@ public class LoginSteps {
 
     seleniumSpec.openBrowserUsingProperties();
     // homePage.open();s
+  }
+
+  @And("I pause until press any key")
+  public void iPauseUntilPressAnyKey() throws InterruptedException {
+    seleniumSpec.iPauseUntilPressAnyKey();
   }
 }
