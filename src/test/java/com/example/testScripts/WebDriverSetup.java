@@ -7,7 +7,7 @@ import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-public abstract class TestBase {
+public abstract class WebDriverSetup {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

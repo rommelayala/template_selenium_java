@@ -3,7 +3,7 @@
     <parameter name="browser" value="${browser}"/>
     <test name="Test">
         <classes>
-            <class name="com.example.testScripts.TestBase"/>
+            <class name="com.example.testScripts.WebDriverSetup"/>
         </classes>
     </test>
 </suite>

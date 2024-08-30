@@ -3,9 +3,9 @@ package com.example.testScripts;
 import com.example.properties.Environment;
 import org.openqa.selenium.WebDriver;
 
-public class SeleniumSpec extends TestBase {
+public class SeleniumSpec extends WebDriverSetup {
   /**
-   * Obtiene el webdriver desde TestBase, podria obtenerlo directamente porque es estatico pero por
+   * Obtiene el webdriver desde WebDriverSetup, podria obtenerlo directamente porque es estatico pero por
    * legibilidad creo el atributo
    */
   WebDriver webDriver = getDriver();
