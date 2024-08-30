@@ -37,6 +37,8 @@ This project is generated from an archetype. It exists out of TestNG, Selenium W
 
 ----------
 ## Links
+Wiki project -> [HERE](https://github.com/rommelayala/template_selenium_java/wiki)
+
 Base project www.testsmith.io [HERE ](https://www.linkedin.com/pulse/selenium-webdriver-testng-maven-archetypes-testsmith/)
 ````
 mvn archetype:generate -B -DarchetypeGroupId=io.testsmith \

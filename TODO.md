@@ -7,9 +7,11 @@
 [ ] Crear steps genericos para db
 [ ] Añadir try catch
 
---------------- In progess ---------------
-[ ] Refactoriza metodos para tener métodos genéricos de encontrar web elements
---------------- Features ---------------
+--------------------------------------------- In progess -------------------------------------------------------
+[ ]
+--------------------------------------------- Features ---------------------------------------------------------
+✅ Refactoriza metodos para tener métodos genéricos de encontrar web elements
+----------------------------------------------------------------------------------------------------------------
 ✅ Integrar Cucumber  
 TENER EN CUENTA QUE ESTAMOS INTEGRANDO CUCUMBER-TESTNG  
 Para integrar cucumber:
@@ -102,7 +104,7 @@ Feature: Login Functionality
     Given I am on the login page
 
 ````
-----------------------------
+----------------------------------------------------------------------------------------------------------------
 ✅ Usar linea de comandos para ejecutar archivo properties de un environment  
 Los archivos properties en src/main/resources/{test}_environment.properties se modelan con estas clases clases [Environment.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fproperties%2FEnvironment.java) (src/main/java/com/example/properties/Environment.java) y [EnvironmentProperties.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fproperties%2FEnvironmentProperties.java), para poder usarlo   
 1 Crea tu archivo properties [test_environment.properties](src%2Fmain%2Fresources%2Ftest_environment.properties)
@@ -146,7 +148,7 @@ lanza tus test
 mvn clean test -Denv=test
 ````
 
------------------------------------
+----------------------------------------------------------------------------------------------------------------
 ✅ Usar linea de comandos para levantar el browser
 + Es posible usar diferentes browsers ya definidos en esta clase src/test/java/com/example/utils/Browser.java.
 ````
