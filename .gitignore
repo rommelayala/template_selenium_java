@@ -150,7 +150,8 @@ Temporary Items
 
 ### Allure ###
 .allure/*
-allure-*
+allure-results/
+allure-reports/
 
 ### Maven ###
 target/*
