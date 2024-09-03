@@ -13,7 +13,7 @@
         <selenium-java.version>4.21.0</selenium-java.version>
         <testng.version>7.10.2</testng.version>
         <logback-classic.version>1.5.6</logback-classic.version>
-        <allure-testng.version>2.27.0</allure-testng.version>
+        <allure-testng.version>2.29.0</allure-testng.version>
         <owner.version>1.0.12</owner.version>
         <webdriver-event-listeners.version>0.6</webdriver-event-listeners.version>
 
@@ -50,11 +50,6 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure-testng.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -98,8 +93,14 @@
         <!-- Cucumber Allure -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber5-jvm</artifactId>
-            <version>2.17.3</version>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>2.21.0</version>
+        </dependency>
+        <!-- TestNG Allure -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
         </dependency>
 
     </dependencies>

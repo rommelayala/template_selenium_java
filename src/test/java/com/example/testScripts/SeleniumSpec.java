@@ -4,6 +4,7 @@ import com.example.properties.Environment;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class SeleniumSpec extends WebDriverSetup {
   /**
@@ -22,13 +23,8 @@ public class SeleniumSpec extends WebDriverSetup {
     webDriver.get(Environment.getProperties().url());
 
   }
-  public void iPauseUntilPressAnyKey() throws InterruptedException {
-    System.out.println("Press Enter to continue...");
-    try {
-      // Esperar a que el usuario presione Enter
-      System.in.read();
-    } catch (IOException e) {
-      e.printStackTrace();
-    };
+
+  public void iPauseForWaitSeconds(int waitSeconds) {
+    webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waitSeconds));
   }
 }

@@ -8,8 +8,47 @@
 [ ] Añadir try catch
 
 --------------------------------------------- In progess -------------------------------------------------------
-[ ]
+
 --------------------------------------------- Features ---------------------------------------------------------
+✅ Corregir la generacion de reports
+No se estaban generando los reportes correctamente  
+Para eso actualicé
+en el pom
+````
+<properties>
+    <allure-testng.version>2.27.0</allure-testng.version> <-- version anterior 2.27.0
+</properties>
+        .
+        .
+        .
+ <dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-cucumber7-jvm</artifactId> <---Actualice la antigua version <artifactId>allure-cucumber5-jvm</artifactId>
+    <version>2.21.0</version>
+</dependency>
+````
+en el RunCucumberTest.java añadí mas plugins
+````
+ plugin = {
+      "pretty",
+      "html:target/cucumber-reports.html",
+      "json:target/cucumber-reports/cucumber.json",
+      "rerun:target/cucumber-reports/rerun.txt",
+      "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+    })
+````
+OJO: 
+- Antes de Ejecutar el server, primero ejecuta los test
+- Para ver los test en el reporte de Allure, primero ejecuta 
+  ````
+  - mvn allure:report
+  ````
+  y luego de compilar el reporte levanta el servidor 
+  ````
+  - mvn allure:serve
+  ````
+  
+
 ----------------------------------------------------------------------------------------------------------------
 ✅ Corrige el default search engine en chrome
 -> chromeOptions.addArguments("-disable-search-engine-choice-screen");

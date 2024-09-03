@@ -1,26 +1,26 @@
 package com.example.utils;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.testng.AllureTestNg;
+import com.example.testScripts.WebDriverSetup;
+import io.qameta.allure.Attachment;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
-
-public class AllureConfig implements ITestListener {
+public class AllureConfig_OLD implements ITestListener {
 
     private static final String RESULTS_DIRECTORY = "target/allure-results/";
+    private static final WebDriver driver = WebDriverSetup.getDriver();
 
     @Override
     public void onStart(ITestContext context) {
         // Crear un timestamp para el directorio
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         String uniqueResultsDirectory = RESULTS_DIRECTORY + "allure-results-" + timestamp;
-    System.out.println("HOLA desde AllureConfig");
 
         // Establecer la variable de sistema para el directorio de resultados
         System.setProperty("allure.results.directory", uniqueResultsDirectory);
@@ -41,6 +41,7 @@ public class AllureConfig implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        saveScreenshot(result.getName(), driver);
     }
 
     @Override
@@ -49,5 +50,9 @@ public class AllureConfig implements ITestListener {
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    }
+    @Attachment(value = "Screenshot of {0}", type = "image/png")
+    public byte[] saveScreenshot(String name, WebDriver driver) {
+        return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

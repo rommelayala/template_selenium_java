@@ -13,9 +13,10 @@ public class LoginSteps {
     seleniumSpec.openBrowserUsingProperties();
     // homePage.open();s
   }
+  
 
-  @And("I pause until press any key")
-  public void iPauseUntilPressAnyKey() throws InterruptedException {
-    seleniumSpec.iPauseUntilPressAnyKey();
+  @And("I pause {int} seconds")
+  public void iPauseSeconds(int waitSeconds) {
+    seleniumSpec.iPauseForWaitSeconds(waitSeconds);
   }
 }
