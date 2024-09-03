@@ -149,10 +149,12 @@ Temporary Items
 *.icloud
 
 ### Allure ###
-
+.allure/*
+allure-results/
+allure-reports/
 
 ### Maven ###
-
+target/*
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
