@@ -13,7 +13,7 @@ public class LoginSteps {
     seleniumSpec.openBrowserUsingProperties();
     // homePage.open();s
   }
-  
+
 
   @And("I pause {int} seconds")
   public void iPauseSeconds(int waitSeconds) {
