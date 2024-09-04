@@ -11,7 +11,7 @@
 
 --------------------------------------------- Features ---------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------
-✅ Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS
+✅ Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS  
 Preconditions
 - Debe existir la carpeta target/allure-results
   si no existe ejecuta los test
@@ -19,7 +19,9 @@ Preconditions
   mvn test -Dbrowser=firefox_headless -Denv=test
   ````
 - Debe existir steps validos src/test/resources/features/login.feature
+
 Ejecucion  
+
 1.- Luego de que exista target/allure-results, vamos a usar este comando   
   ````shell
   mvn allure:report -Dallure.results.directory=target/allure-results -Dallure.report.directory=target/site/allure-maven-plugin
@@ -42,7 +44,7 @@ Ejecucion
 4.- Levanta el allure server
   ````shell
     mvn allure:serve
-    ````
+  ````  
 
 ----------------------------------------------------------------------------------------------------------------
 ✅ Corregir la generacion de reports
