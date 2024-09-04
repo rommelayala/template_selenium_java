@@ -1,6 +1,5 @@
 # TODO:
 
-[ ] Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS  
 [ ] Corregir porque no se muestran mensajes del logger por consola
 [ ] Dockerizar los tests
 [ ] Crear steps genericos para rest
@@ -71,7 +70,7 @@ en el RunCucumberTest.java añadí mas plugins
       "html:target/cucumber-reports.html",
       "json:target/cucumber-reports/cucumber.json",
       "rerun:target/cucumber-reports/rerun.txt",
-      "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+      "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" <--
     })
 ````
 OJO: 
