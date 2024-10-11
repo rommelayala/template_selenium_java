@@ -1,13 +1,13 @@
 # TODO:
 
-[ ] Corregir porque no se muestran mensajes del logger por consola
-[ ] Dockerizar los tests
-[ ] Crear steps genericos para rest
-[ ] Crear steps genericos para db
-[ ] Añadir try catch
+[ ] Corregir porque no se muestran mensajes del logger por consola  
+[ ] Dockerizar los tests  
+[ ] Crear steps genericos para rest  
+[ ] Crear steps genericos para db  
+[ ] Añadir try catch  
 
 --------------------------------------------- In progess -------------------------------------------------------
-
+[ ] Añadir selenium grid usando un flag desde mnv
 --------------------------------------------- Features ---------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------
 ✅ Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS  
