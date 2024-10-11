@@ -7,11 +7,13 @@ import com.example.testScripts.WebDriverSetup;
 public class Hooks {
     @Before
     public void beforeScenario() {
-        WebDriverSetup.setup(); // Inicializa el WebDriver
+        System.out.println("Inicializando el WebDriver desde @Before beforeScenario");
+        WebDriverSetup.setup();
     }
 
-    @After
+
     public void afterScenario() {
+        System.out.println("Cerrando el WebDriver desde el @After afterScenario");
         WebDriverSetup.teardown(); // Cierra el WebDriver
     }
 }

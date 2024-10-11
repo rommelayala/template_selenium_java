@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    platform: linux/x86_64
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    networks:
+      - selenium-network
+
+  chrome:
+    image: selenium/node-chrome:dev
+    container_name: chrome
+    platform: linux/x86_64
+    depends_on:
+      - selenium-hub
+    ports:
+      - "5900:5900"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - VNC_NO_PASSWORD=1
+    networks:
+      - selenium-network
+
+  firefox:
+    image: selenium/node-firefox:dev
+    container_name: firefox
+    platform: linux/x86_64
+    depends_on:
+      - selenium-hub
+    ports:
+      - "5901:5901"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - VNC_NO_PASSWORD=1
+    networks:
+      - selenium-network
+
+  edge:
+    image: selenium/node-edge:dev
+    container_name: edge
+    platform: linux/x86_64
+    depends_on:
+      - selenium-hub
+    ports:
+      - "5902:5902"
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - VNC_NO_PASSWORD=1
+    networks:
+      - selenium-network
+
+networks:
+  selenium-network:
+    driver: bridge

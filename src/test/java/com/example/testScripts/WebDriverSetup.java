@@ -15,7 +15,6 @@ public abstract class WebDriverSetup {
         return driver.get();
     }
 
-    @BeforeClass
     public static void setup() {
         final String browser = System.getProperty("browser", "firefox");
         WebDriver originalDriver = BrowserUtil.createDriver(browser);
@@ -27,9 +26,11 @@ public abstract class WebDriverSetup {
         ).decorate(originalDriver));
     }
 
-    @AfterClass
     public static void teardown() {
-        getDriver().quit();
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();  // Limpiar el ThreadLocal para evitar fugas de memoria
+        }
     }
 
 }

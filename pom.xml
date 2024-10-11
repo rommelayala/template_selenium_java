@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>my-new-project</artifactId>
+    <artifactId>template_selenium_java</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <properties>
