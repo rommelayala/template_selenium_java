@@ -9,28 +9,34 @@ import org.testng.annotations.BeforeClass;
 
 public abstract class WebDriverSetup {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+  private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver() {
-        return driver.get();
-    }
+  public static WebDriver getDriver() {
+    return driver.get();
+  }
 
-    public static void setup() {
-        final String browser = System.getProperty("browser", "firefox");
-        WebDriver originalDriver = BrowserUtil.createDriver(browser);
-        driver.set(new EventFiringDecorator(
+  public static void setup() {
+    final String browser = System.getProperty("browser", "firefox");
+    WebDriver originalDriver = BrowserUtil.createDriver(browser);
+    driver.set(
+        new EventFiringDecorator(
                 new WebDriverLoggingListener(),
                 new SavePageSourceOnExceptionListener(originalDriver, "target/log/pagesources"),
                 new SaveScreenshotOnExceptionListener(originalDriver, "target/log/screenshots"),
-                new HighlightElementsListener()
-        ).decorate(originalDriver));
-    }
+                new HighlightElementsListener())
+            .decorate(originalDriver));
+  }
 
-    public static void teardown() {
-        if (getDriver() != null) {
-            getDriver().quit();
-            driver.remove();  // Limpiar el ThreadLocal para evitar fugas de memoria
-        }
+  public static void teardown() {
+    try {
+      if (getDriver() != null) {
+        getDriver().quit();
+        driver.remove(); // Limpiar el ThreadLocal para evitar fugas de memoria
+      } else {
+        System.out.println("EL driver es null ");
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
-
+  }
 }

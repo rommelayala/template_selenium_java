@@ -11,7 +11,7 @@ public class Hooks {
         WebDriverSetup.setup();
     }
 
-
+    @After
     public void afterScenario() {
         System.out.println("Cerrando el WebDriver desde el @After afterScenario");
         WebDriverSetup.teardown(); // Cierra el WebDriver
