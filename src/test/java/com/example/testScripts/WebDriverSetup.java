@@ -1,7 +1,7 @@
 package com.example.testScripts;
 
 import io.testsmith.support.listeners.*;
-import com.example.utils.BrowserUtil;
+import com.example.utils.RCommonSeleniumUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterClass;
@@ -18,7 +18,7 @@ public abstract class WebDriverSetup {
     @BeforeClass
     public static void setup() {
         final String browser = System.getProperty("browser", "firefox");
-        WebDriver originalDriver = BrowserUtil.createDriver(browser);
+        WebDriver originalDriver = RCommonSeleniumUtil.createDriver(browser);
         driver.set(new EventFiringDecorator(
                 new WebDriverLoggingListener(),
                 new SavePageSourceOnExceptionListener(originalDriver, "target/log/pagesources"),

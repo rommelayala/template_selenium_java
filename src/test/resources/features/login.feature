@@ -24,5 +24,6 @@ Feature: Login Functionality
     Given I am on the login page
     And I pause 1 seconds
 
+  @test
   Scenario: Successful load page and no wait
     Given I am on the login page

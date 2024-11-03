@@ -8,7 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class BrowserUtil {
+public class RCommonSeleniumUtil {
 
     public static WebDriver createDriver(String browser) {
         WebDriver driver = null;

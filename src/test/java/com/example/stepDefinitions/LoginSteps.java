@@ -10,7 +10,7 @@ public class LoginSteps {
   @Given("I am on the login page")
   public void iAmOnTheLoginPage() {
 
-    seleniumSpec.openBrowserUsingProperties();
+    seleniumSpec.gogoUrlUsingProperties();
     // homePage.open();s
   }
 

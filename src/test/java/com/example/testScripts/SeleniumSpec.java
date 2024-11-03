@@ -3,7 +3,6 @@ package com.example.testScripts;
 import com.example.properties.Environment;
 import org.openqa.selenium.WebDriver;
 
-import java.io.IOException;
 import java.time.Duration;
 
 public class SeleniumSpec extends WebDriverSetup {
@@ -19,7 +18,7 @@ public class SeleniumSpec extends WebDriverSetup {
    * Mostrar valores de un atributo System.out.println("EL valor del nuevo atributo es -> " +
    * Environment.getProperties().toto()); *
    */
-  public void openBrowserUsingProperties() {
+  public void gogoUrlUsingProperties() {
     webDriver.get(Environment.getProperties().url());
 
   }
