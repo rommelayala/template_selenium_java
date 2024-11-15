@@ -1,6 +1,6 @@
 package com.example.stepDefinitions;
 
-import com.example.testScripts.SeleniumSpec;
+import com.example.testSpecs.SeleniumSpec;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 

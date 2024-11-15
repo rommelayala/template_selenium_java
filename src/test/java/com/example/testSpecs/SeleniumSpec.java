@@ -1,6 +1,7 @@
-package com.example.testScripts;
+package com.example.testSpecs;
 
 import com.example.properties.Environment;
+import com.example.utils.WebDriverSetup;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;

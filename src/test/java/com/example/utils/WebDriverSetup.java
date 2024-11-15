@@ -1,4 +1,4 @@
-package com.example.testScripts;
+package com.example.utils;
 
 import io.testsmith.support.listeners.*;
 import com.example.utils.RommonSeleniumUtil;

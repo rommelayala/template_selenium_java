@@ -4,8 +4,10 @@ This project is generated from an archetype. It exists out of TestNG, Selenium W
 
 
 ## Run tests
-
+Clone the repo execute mvn install and click on the gree button or execute the command
 `mvn clean test`
+`mvn verify -Dcucumber.filter.tags="@test3"`
+`mvn verify -X -Dcucumber.filter.tags="@test3"`
 
 ## Run tests in specific browser
 

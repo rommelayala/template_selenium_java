@@ -2,7 +2,7 @@ package com.example.stepDefinitions;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
-import com.example.testScripts.WebDriverSetup;
+import com.example.utils.WebDriverSetup;
 
 public class Hooks {
     @Before

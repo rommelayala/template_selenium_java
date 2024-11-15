@@ -17,7 +17,6 @@
         <owner.version>1.0.12</owner.version>
         <webdriver-event-listeners.version>0.6</webdriver-event-listeners.version>
 
-        <aspectj.version>1.9.22.1</aspectj.version>
         <assertj-core.version>3.26.0</assertj-core.version>
 
         <allure-maven.version>2.12.0</allure-maven.version>
@@ -161,14 +160,14 @@
                     <parallel>classes</parallel>
                     <threadCount>4</threadCount>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar"
                     </argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
+                        <version>1.9.22.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -177,8 +176,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>23</source>
+                    <target>23</target>
                 </configuration>
             </plugin>
             <plugin>
