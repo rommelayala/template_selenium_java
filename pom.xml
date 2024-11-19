@@ -128,10 +128,11 @@
             <artifactId>json-schema-validator</artifactId>
             <version>5.5.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
         <!-- AspectJ dependencies -->

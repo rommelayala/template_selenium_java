@@ -5,8 +5,8 @@ This project is generated from an archetype. It exists out of TestNG, Selenium W
 ## Compatibilidad
 https://github.com/eclipse-aspectj/aspectj/blob/master/docs/release/JavaVersionCompatibility.adoc
 Ahora mismo tienes AOP
-|AspectJ version| 	Java version| 	Comments|
-|1.9.22         |   22          | Cuidado con las versionde de java que vas a instalar!!! |
+|AspectJ version| 	Java version  | 	Comments|
+|1.9.22         |   22.0.2-oracle | Cuidado con las versionde de java que vas a instalar!!! |
 
 
 ## Run tests
