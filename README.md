@@ -10,10 +10,10 @@ Ahora mismo tienes AOP
 
 
 ## Run tests
-Clone the repo execute mvn install and click on the gree button or execute the command
-`mvn clean test`
-`mvn verify -Dcucumber.filter.tags="@test3"`
-`mvn verify -X -Dcucumber.filter.tags="@test3"`
+Clone the repo execute mvn install and click on the gree button or execute the command (En windows usar el comando de esta manera mvn verify -D cucumber.filter.tags="@test3 o mvn verify "-Dcucumber.filter.tags=@test3")    
+`mvn clean test`  
+`mvn verify -Dcucumber.filter.tags="@test3"`  
+`mvn verify -X -Dcucumber.filter.tags="@test3"`  
 
 ## Run tests in specific browser
 
