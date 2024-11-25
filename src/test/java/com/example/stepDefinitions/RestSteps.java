@@ -9,13 +9,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class RestSteps {
-  private RestSpec restSpec = new RestSpec();
+  private final RestSpec restSpec = new RestSpec();
     RommonRestUtil request;
 
     @Given("I prepare {string} request to {string}")
   public void iPrepareRequestTo(String requestType, String url){
       request = restSpec.generateRestRequest(requestType);
-
 
     }
 

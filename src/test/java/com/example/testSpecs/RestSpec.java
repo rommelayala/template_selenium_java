@@ -80,7 +80,7 @@ public class RestSpec {
 
         // Validaciones adicionales específicas
         Assert.assertTrue("ID debe ser positivo", jsonPath.getInt("id") > 0);
-        Assert.assertTrue("Nombre no debe estar vacío", !jsonPath.getString("name").isEmpty());
+        Assert.assertFalse("Nombre no debe estar vacío", jsonPath.getString("name").isEmpty());
         Assert.assertTrue(
                 "URL de imagen debe terminar en .jpeg", jsonPath.getString("image").endsWith(".jpeg"));
         Assert.assertTrue(
