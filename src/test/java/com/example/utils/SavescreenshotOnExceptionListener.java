@@ -10,6 +10,9 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class SavescreenshotOnExceptionListener extends SaveScreenshotOnExceptionListener {
@@ -26,7 +29,7 @@ public class SavescreenshotOnExceptionListener extends SaveScreenshotOnException
     public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
 
         String filename = generateRandomFilename(e.getTargetException().getMessage().toLowerCase(Locale.ROOT)).concat(".html");
-        saveFile(folder, filename, driver.getPageSource().getBytes());
+        saveFile(this.folder, filename, screenshot(this.driver));
     }
     private static String generateRandomFilename(String filename) {
         if (filename.length() >= MAX_FILENAME) {
@@ -35,8 +38,7 @@ public class SavescreenshotOnExceptionListener extends SaveScreenshotOnException
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmssSS");
         filename = filename.replaceAll("\\s", "_").replaceAll(":", "");
         filename = filename.replaceAll("\"",  "");
-        return dateFormat.format(new Date()) +
-                "-" + filename;
+        return dateFormat.format(new Date()) + "-" + filename;
     }
     private static void saveFile(String folder, String filename, byte[] data) {
         try {
@@ -49,5 +51,8 @@ public class SavescreenshotOnExceptionListener extends SaveScreenshotOnException
         } catch (Exception e) {
             throw new IllegalStateException("Unable to save file", e);
         }
+    }
+    private static byte[] screenshot(WebDriver driver) {
+        return !TakesScreenshot.class.isAssignableFrom(driver.getClass()) ? null : (byte[])((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
