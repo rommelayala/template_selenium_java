@@ -7,6 +7,7 @@ import org.assertj.core.api.AbstractIntegerAssert;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.ObjectAssert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -89,8 +90,12 @@ public class RommonSeleniumUtil {
       case "partiallinktext":
         webElements = webDriver.findElements(By.partialLinkText(value));
         break;
-      default:
-        throw new IllegalArgumentException("Selector type '" + by + "' is not supported.");
+
+    }
+
+    // Lanzar excepción si no se encuentran elementos
+    if (webElements == null || webElements.isEmpty()) {
+      throw new NoSuchElementException("No elements found using " + by + " = " + value);
     }
 
     return webElements;

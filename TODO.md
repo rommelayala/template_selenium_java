@@ -1,11 +1,11 @@
 # TODO:
 
-[ ] Corregir la creacion de reportes de cucumber
-[ ] Corregir porque no se muestran mensajes del logger por consola
-[ ] Dockerizar los tests
-[ ] Crear steps genericos para rest
-[ ] Crear steps genericos para db
-[ ] Añadir try catch
+[ ] Corregir la creacion de reportes de cucumber  
+[ ] Corregir porque no se muestran mensajes del logger por consola  
+[ ] Dockerizar los tests  
+[ ] Crear steps genericos para rest  
+[ ] Crear steps genericos para db  
+[ ] Añadir try catch  
 
 --------------------------------------------- In progess -------------------------------------------------------
 

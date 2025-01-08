@@ -184,7 +184,7 @@
                         <seleniumBrowser>${seleniumBrowser}</seleniumBrowser>
                     </systemPropertyVariables>
                     <includes>
-                        <include>**/*Test.java</include>
+                        <include>**/*Test*.java</include>
                     </includes>
                     <parallel>classes</parallel>
                     <threadCount>4</threadCount>

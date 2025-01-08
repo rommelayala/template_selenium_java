@@ -1,5 +1,8 @@
 package com.example.utils;
 
+import com.example.listeners.SavepageSourceOnExceptionListener;
+import com.example.listeners.SavescreenshotOnExceptionListener;
+import com.example.listeners.SimpleEventListener;
 import com.example.properties.EnvironmentProperties;
 import io.testsmith.support.listeners.*;
 import java.util.concurrent.TimeUnit;
@@ -31,18 +34,19 @@ public class WebDriverSetup {
     try{
 
         WebDriver originalDriver = RommonSeleniumUtil.createDriver(browser);
+        //originalDriver.manage().window().maximize();
+        originalDriver.manage().deleteAllCookies();
+        originalDriver.manage().timeouts().pageLoadTimeout(70, TimeUnit.SECONDS);
+        originalDriver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+
         driver.set(
-                new EventFiringDecorator(
+                new EventFiringDecorator<>(
                         new WebDriverLoggingListener(),
                         new SavepageSourceOnExceptionListener(originalDriver, "target/log1/pagesources"),
                         new SavescreenshotOnExceptionListener(originalDriver, "target/log1/screenshots"),
-                        new HighlightElementsListener())
+                        new HighlightElementsListener(),
+                        new SimpleEventListener())
                         .decorate(originalDriver));
-        WebDriver driverInstance = driver.get();
-        //driverInstance.manage().window().maximize();
-        driverInstance.manage().deleteAllCookies();
-        driverInstance.manage().timeouts().pageLoadTimeout(70, TimeUnit.SECONDS);
-        driverInstance.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
     } catch (TimeoutException e) {
       System.err.println("Page Load Timeout: " + e.getMessage());

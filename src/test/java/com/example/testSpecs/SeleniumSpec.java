@@ -4,7 +4,9 @@ import com.example.properties.EnvironmentProperties;
 import com.example.utils.RommonSeleniumUtil;
 import com.example.utils.Wait;
 import com.example.utils.WebDriverSetup;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Ignore;
 
@@ -56,9 +58,23 @@ public class SeleniumSpec extends WebDriverSetup {
   }
 
   public void clickOnTheButtonWith(String selector) {
+    //String[] method_selector = selector.split(":");
+    //List<WebElement> wel =
+    //    rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
+    //wel.getFirst().click();
     String[] method_selector = selector.split(":");
-    List<WebElement> wel =
-        rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
-    wel.getFirst().click();
+    WebElement element;
+
+    try {
+      List<WebElement> wel =
+              rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
+
+      // Intentamos interactuar con el primer elemento
+      element = wel.get(0);
+      element.click();
+    } catch (NoSuchElementException e) {
+      // Forzar que la excepción pase a través del WebDriver decorado
+      throw new WebDriverException("Element not found: " + selector, e);
+    }
   }
 }

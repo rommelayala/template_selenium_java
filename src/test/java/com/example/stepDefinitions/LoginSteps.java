@@ -35,7 +35,7 @@ public class LoginSteps {
     seleniumSpec.iTypeTextOnInput(text, selector);
   }
 
-  @And("click on the button with {string}")
+  @And("click on the element with {string}")
   public void clickOnTheButtonWithIdBtnLogin(String selector) {
     seleniumSpec.clickOnTheButtonWith( selector);
   }
