@@ -24,11 +24,14 @@ public class RestSteps {
   }
 
   @Then("the response body is {string}")
-  public void theResponseBodyIs(int arg0) {
+  public void theResponseBodyIs(String arg0) {
+    System.out.println("--->>> the response body is "+arg0);
+
   }
 
   @And("the response body contains parameter {string}")
-  public void theResponseBodyContainsParameterLocationUrl() {
+  public void theResponseBodyContainsParameterLocationUrl(String arg0) {
+    System.out.println("--->>> the response body contains paramete "+arg0);
   }
 
   @And("the response body parameter {string} has exactly value {string}")
