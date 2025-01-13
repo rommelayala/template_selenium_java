@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '22'
-          distribution: '22.0.2-oracle'
+          distribution: 'temurin'
           cache: maven
 
       - name: Cache Maven dependencies
