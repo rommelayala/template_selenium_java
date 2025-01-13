@@ -1,0 +1,46 @@
+name: Run Selenium Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-22.04
+    services:
+      selenium:
+        image: selenium/standalone-firefox:latest  # Puede cambiar a selenium/standalone-chrome si prefieres Chrome
+        options: --shm-size=2g  # Establece el tamaño de memoria compartida para evitar errores de memoria
+        ports:
+          - 4444:4444  # Expone el puerto 4444 para el WebDriver
+    steps:
+      # Checkout del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Configuración de Java (si no está preconfigurado en el runner)
+      - name: Set up JDK 22
+        uses: actions/setup-java@v3
+        with:
+          java-version: '22'
+          distribution: 'adoptopenjdk'
+
+      # Instalar dependencias del proyecto
+      - name: Install dependencies
+        run: mvn clean install --no-transfer-progress
+
+      # Ejecutar pruebas con Maven
+      - name: Run tests with Maven
+        run: mvn test -DsuiteXmlFile=testng.xml  # Ajusta esto según tu configuración de Maven
+
+      # Publicar resultados del reporte (opcional)
+      - name: Upload test reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: cucumber-reports
+          path: target/cucumber-reports/cucumber-report.html

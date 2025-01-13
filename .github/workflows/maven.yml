@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven CI with Allure Reports
+name: Execute tests
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Check out the code
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '22'
-          distribution: 'temurin'
+          distribution: 'oracle'
           cache: maven
 
       - name: Cache Maven dependencies
@@ -43,18 +43,10 @@ jobs:
 
       - name: Run tests
         run: mvn clean test -Dbrowser=chrome_headless
-
-      - name: Generate Allure Report
-        run: mvn allure:report
-
-      - name: Archive Allure Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
-
-      - name: Archive Test Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: target/surefire-reports/
+          
+          # 5. Configurar GitHub Pages
+               - name: Deploy to GitHub Pages
+               uses: peaceiris/actions-gh-pages@v3
+               with:
+                 github_token: ${{ secrets.GITHUB_TOKEN }}
+                 publish_dir: ./target/cucumber-reports
