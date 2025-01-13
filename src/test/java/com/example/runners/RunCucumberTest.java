@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
     },
     plugin = {
       "pretty",
-      "html:target/cucumber-reports.html",
+      "html:target/cucumber-reports/cucumber-report.html",
       "json:target/cucumber-reports/cucumber.json",
       "rerun:target/cucumber-reports/rerun.txt",
       "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
