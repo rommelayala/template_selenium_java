@@ -3,29 +3,38 @@
 This project is generated from an archetype. It exists out of TestNG, Selenium WebDriver, Allure and OWNER as the main dependencies.
 
 ## Compatibilidad
-https://github.com/eclipse-aspectj/aspectj/blob/master/docs/release/JavaVersionCompatibility.adoc
-Ahora mismo tienes AOP
-|AspectJ version| 	Java version  | 	Comments|
-|1.9.22         |   22.0.2-oracle | Cuidado con las versionde de java que vas a instalar!!! |
 
 
 ## Run tests
 Clone the repo execute mvn install and click on the gree button or execute the command (En windows usar el comando de esta manera mvn verify -D cucumber.filter.tags="@test3 o mvn verify "-Dcucumber.filter.tags=@test3")    
 `mvn clean test`  
+`mvn clean verify`  
 `mvn verify -Dcucumber.filter.tags="@test3"`  
 `mvn verify -X -Dcucumber.filter.tags="@test3"`  
 
-## Run tests in specific browser
+### Execute test using different browsers
 
-`mvn clean test -Dbrowser=chrome`
+`mvn clean verify -Dbrowser=firefox`
 
-`mvn clean test -Dbrowser=firefox`
+`mvn clean verify -Dbrowser=firefox_headless`
 
-`mvn clean test -Dbrowser=edge`
+`mvn clean verify -Dbrowser=chrome`
 
-`mvn clean test -Dbrowser=chrome_headless`
+`mvn clean verify -Dbrowser=chrome_headless`
 
-`mvn clean test -Dbrowser=firefox_headless`
+`mvn clean verify -Dbrowser=edge`
+
+### Execute only one feature
+- Mac / Linux  
+  `mvn verify -Dcucumber.filter.tags="@ResellerOperatorAddKits2KitsforDevelopment"`
+- Windows  
+  `mvn verify -D cucumber.filter.tags="@ResellerOperatorAddKits2KitsforDevelopment"`
+
+### Execute only one scenario
+- Mac / Linux  
+  `mvn verify -Dcucumber.filter.tags="@ResellerOperatorAddKits2KitsforDevelopment"`
+- Windows  
+  `mvn verify -D cucumber.filter.tags="@ResellerOperatorAddKits2KitsforDevelopment"`
 
 ## Generate report
 
