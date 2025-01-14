@@ -1,9 +1,9 @@
-package com.example.testScripts;
+package com.example.testSpecs;
 
-import com.example.properties.Environment;
+import com.example.properties.EnvironmentProperties;
+import com.example.utils.WebDriverSetup;
 import org.openqa.selenium.WebDriver;
 
-import java.io.IOException;
 import java.time.Duration;
 
 public class SeleniumSpec extends WebDriverSetup {
@@ -12,15 +12,16 @@ public class SeleniumSpec extends WebDriverSetup {
    * legibilidad creo el atributo
    */
   WebDriver webDriver = getDriver();
-
+  static EnvironmentProperties environmentProperties = new EnvironmentProperties();
   public SeleniumSpec() {}
 
   /**
    * Mostrar valores de un atributo System.out.println("EL valor del nuevo atributo es -> " +
    * Environment.getProperties().toto()); *
    */
-  public void openBrowserUsingProperties() {
-    webDriver.get(Environment.getProperties().url());
+  public void gogoUrlUsingProperties() {
+    String url = environmentProperties.getSystemProperty("url");
+    webDriver.get(url);
 
   }
 

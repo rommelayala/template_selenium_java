@@ -1,5 +1,6 @@
 Feature: Login Functionality
 
+  @test1
   Scenario: Successful load page and wait 6 seconds
     Given I am on the login page
     And I pause 6 seconds
@@ -12,6 +13,7 @@ Feature: Login Functionality
     Given I am on the login page
     And I pause 4 seconds
 
+  @test2
   Scenario: Successful load page and wait 3 seconds
     Given I am on the login page
     And I pause 3 seconds
@@ -24,5 +26,6 @@ Feature: Login Functionality
     Given I am on the login page
     And I pause 1 seconds
 
+  @test3
   Scenario: Successful load page and no wait
     Given I am on the login page

@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import com.example.testScripts.WebDriverSetup;
 import io.qameta.allure.Attachment;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,6 +52,6 @@ public class AllureConfig_OLD implements ITestListener {
     }
     @Attachment(value = "Screenshot of {0}", type = "image/png")
     public byte[] saveScreenshot(String name, WebDriver driver) {
-        return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

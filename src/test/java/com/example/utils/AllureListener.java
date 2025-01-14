@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import com.example.testScripts.WebDriverSetup;
 import io.qameta.allure.Allure;
 import io.qameta.allure.listener.TestLifecycleListener;
 import io.qameta.allure.model.Status;

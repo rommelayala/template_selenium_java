@@ -1,5 +1,6 @@
 # TODO:
 
+[ ] Corregir la creacion de reportes de cucumber
 [ ] Corregir porque no se muestran mensajes del logger por consola
 [ ] Dockerizar los tests
 [ ] Crear steps genericos para rest
@@ -9,6 +10,18 @@
 --------------------------------------------- In progess -------------------------------------------------------
 
 --------------------------------------------- Features ---------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+
+He Reparado save the file en el metodo onError creando estas nuevas clases:  
+[SavepageSourceOnExceptionListener.java](src%2Ftest%2Fjava%2Fcom%2Fexample%2Futils%2FSavepageSourceOnExceptionListener.java)  
+[SavescreenshotOnExceptionListener.java](src%2Ftest%2Fjava%2Fcom%2Fexample%2Futils%2FSavescreenshotOnExceptionListener.java)  
+----------------------------------------------------------------------------------------------------------------
+Cargar los properties como variables de sistema en Hooks.java - loadProperties() cargo las variables 
+solucionando el que no se pueda ejecutar multiples features uno tras de otro     
+
+para obtenerlas usar
+`System.getProperty("url-pp")
+
 ----------------------------------------------------------------------------------------------------------------
 ✅ Generar un reporte en allure por cada ejecucion que tenga por nombre dd-mm-aaaa HH:MM:SS  
 Preconditions
@@ -169,19 +182,19 @@ public class Hooks {
 }
 ````
 2.3 El archivo de steps 
-````java
+```java
 package com.example.stepDefinitions;
 
 public class LoginSteps {
   private WebDriver driver = TestBase.getDriver();
-  private HomePage homePage = new HomePage(driver);
+  private final HomePage homePage = new HomePage(driver);
   @Given("I am on the login page")
   public void iAmOnTheLoginPage() {
 
     homePage.open();
   }
 }
-````
+```
 2.4 El features
 ````gherkin
 Feature: Login Functionality
@@ -194,11 +207,12 @@ Feature: Login Functionality
 ✅ Usar linea de comandos para ejecutar archivo properties de un environment  
 Los archivos properties en src/main/resources/{test}_environment.properties se modelan con estas clases clases [Environment.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fproperties%2FEnvironment.java) (src/main/java/com/example/properties/Environment.java) y [EnvironmentProperties.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fproperties%2FEnvironmentProperties.java), para poder usarlo   
 1 Crea tu archivo properties [test_environment.properties](src%2Fmain%2Fresources%2Ftest_environment.properties)
+
 ````properties
 url=https://practicesoftwaretesting.com
 username=username
 password=password
---> toto=tata
+-->=toto=tata
 ````
 2 Enlaza el properties con la interfaz [EnvironmentProperties.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fproperties%2FEnvironmentProperties.java), esta interfaz ya es generica {env} y lo toma desde la comando mvn test -Denv=test solo debes de declarar los nuevos atributos/parametros que quieres rescatar
 ````java

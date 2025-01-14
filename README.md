@@ -4,6 +4,7 @@ This project is generated from an archetype. It exists out of TestNG, Selenium W
 
 ## Compatibilidad
 
+
 ## Run tests
 Clone the repo execute mvn install and click on the gree button or execute the command (En windows usar el comando de esta manera mvn verify -D cucumber.filter.tags="@test3 o mvn verify "-Dcucumber.filter.tags=@test3")    
 `mvn clean test`  
