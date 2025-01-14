@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
     },
     plugin = {
       "pretty",
-      "html:target/docs/cucumber-report.html",
+      "html:target/docs/index.html",
       "json:target/docs/cucumber.json",
       "rerun:target/docs/rerun.txt",
 
