@@ -26,7 +26,7 @@ public abstract class WebDriverSetup {
   @BeforeClass
   public static void setup() {
     //final String browser = System.getProperty("browser", "firefox");
-    String browser = environmentProperties.getSystemProperty("browser", "firefox");
+    String browser = environmentProperties.getSystemProperty("browser", "chrome_headless");
     if (browser != null) {
       WebDriver originalDriver = RommonSeleniumUtil.createDriver(browser);
       driver.set(
