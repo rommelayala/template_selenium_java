@@ -13,8 +13,9 @@ import org.testng.ITestResult;
 public class AllureConfig_OLD implements ITestListener {
 
     private static final String RESULTS_DIRECTORY = "target/allure-results/";
-    private static final WebDriver driver = WebDriverSetup.getDriver();
+    //private static final WebDriver driver = WebDriverSetup.getDriver();
 
+    private static final WebDriver driver = WebDriverSetup.getInstance().getDriver();
     @Override
     public void onStart(ITestContext context) {
         // Crear un timestamp para el directorio

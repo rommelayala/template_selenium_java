@@ -8,73 +8,78 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Ignore;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 
-public class SeleniumSpec extends WebDriverSetup {
+public class SeleniumSpec {
+  private final WebDriver webDriver;
+  private final Wait wait;
+  private final RommonSeleniumUtil rSeleniumUtil = new RommonSeleniumUtil();
+  private static final EnvironmentProperties environmentProperties = new EnvironmentProperties();
+
+  public SeleniumSpec() {
+    this.webDriver = WebDriverSetup.getInstance().getDriver();
+    this.wait = new Wait(webDriver);
+  }
+
   /**
-   * Obtiene el webdriver desde WebDriverSetup, podria obtenerlo directamente porque es estatico
-   * pero por legibilidad creo el atributo
+   * Navega a una URL configurada en las propiedades.
    */
-  WebDriver webDriver = getDriver();
-
-  Wait wait = new Wait(webDriver);
-  RommonSeleniumUtil rSeleniumUtil = new RommonSeleniumUtil();
-  static EnvironmentProperties environmentProperties = new EnvironmentProperties();
-
-  public SeleniumSpec() {}
-
-  /**
-   * Mostrar valores de un atributo System.out.println("EL valor del nuevo atributo es -> " +
-   * Environment.getProperties().toto()); *
-   */
-  public void gotoUrlUsingProperties() {
-    String url = environmentProperties.getSystemProperty("url");
+  public void goToUrlUsingProperties() {
+    String url = environmentProperties.getSystemProperty("url", "http://default.url");
     webDriver.get(url);
   }
 
-  public void gogoUrlUsingFeatureString(String url) {
+  /**
+   * Navega a una URL especificada.
+   */
+  public void goToUrl(String url) {
     webDriver.get(url);
   }
 
-  public void iPauseForWaitSeconds(int waitSeconds) {
+  /**
+   * Configura un tiempo de espera implícito.
+   */
+  public void setImplicitWait(int waitSeconds) {
     webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waitSeconds));
   }
 
-  public void iGoToThisUrl(String url) {
-    webDriver.get(url);
-  }
-
-
-  public void iTypeTextOnInput(String text, String selector) {
-    String[] method_selector = selector.split(":");
+  /**
+   * Escribe texto en un campo de entrada identificado por un selector.
+   */
+  public void typeText(String text, String selector) {
+    String[] methodSelector = selector.split(":");
     wait.force_sleep(500);
-    List<WebElement> wel =
-        rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
 
-    wel.getFirst().sendKeys(text);
+    List<WebElement> elements = rSeleniumUtil.getWebElementBy(methodSelector[0], methodSelector[1], webDriver);
+
+    Optional<WebElement> element = elements.stream().findFirst();
+    element.ifPresentOrElse(
+            e -> e.sendKeys(text),
+            () -> {
+              throw new WebDriverException("No elements found for selector: " + selector);
+            }
+    );
   }
 
-  public void clickOnTheButtonWith(String selector) {
-    //String[] method_selector = selector.split(":");
-    //List<WebElement> wel =
-    //    rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
-    //wel.getFirst().click();
-    String[] method_selector = selector.split(":");
-    WebElement element;
+  /**
+   * Hace clic en un botón identificado por un selector.
+   */
+  public void clickButton(String selector) {
+    String[] methodSelector = selector.split(":");
 
     try {
-      List<WebElement> wel =
-              rSeleniumUtil.getWebElementBy(method_selector[0], method_selector[1], webDriver);
+      List<WebElement> elements = rSeleniumUtil.getWebElementBy(methodSelector[0], methodSelector[1], webDriver);
 
-      // Intentamos interactuar con el primer elemento
-      element = wel.get(0);
+      WebElement element = elements.stream().findFirst().orElseThrow(() ->
+              new NoSuchElementException("No elements found for selector: " + selector)
+      );
       element.click();
+
     } catch (NoSuchElementException e) {
-      // Forzar que la excepción pase a través del WebDriver decorado
-      throw new WebDriverException("Element not found: " + selector, e);
+      throw new WebDriverException("Element not found or not clickable: " + selector, e);
     }
   }
 }
