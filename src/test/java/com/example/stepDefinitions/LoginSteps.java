@@ -3,9 +3,12 @@ package com.example.stepDefinitions;
 import com.example.testSpecs.SeleniumSpec;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import org.slf4j.Logger;
 
 public class LoginSteps {
   private final SeleniumSpec seleniumSpec = new SeleniumSpec();
+
+  private static final Logger logger = org.slf4j.LoggerFactory.getLogger(LoginSteps.class);
 
   @Given("I am on the login page")
   public void iAmOnTheLoginPage() {
@@ -18,7 +21,7 @@ public class LoginSteps {
     seleniumSpec.iPauseForWaitSeconds(waitSeconds);
   }
   public void iAmOnTheLoginPage_aspect() {
-    System.out.println("Navigating to login page");
+    logger.debug("Navigating to login page");
   }
 
   public void enterUsername_aspect(String username) {
@@ -27,7 +30,7 @@ public class LoginSteps {
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
-    System.out.println("Entering username: " + username);  }
+    logger.info("Entering username: " + username);  }
 
   public void enterPassword_aspect(String password) {
     try {
@@ -35,7 +38,7 @@ public class LoginSteps {
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
-    System.out.println("Entering password: " + password);  }
+    logger.info("Entering password: " + password);  }
 
   public void clickLoginButton_aspect() {
     try {
@@ -43,5 +46,5 @@ public class LoginSteps {
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
-    System.out.println("Clicking login button");  }
+    logger.info("Clicking login button");  }
 }
