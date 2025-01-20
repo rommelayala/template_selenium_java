@@ -1,8 +1,33 @@
 <configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- Definir un appender para la consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="io.testsmith.support.listeners" level="debug" />
+    <!-- Este es la configuracion global de los mensajes
+     Prioridad:
+    TRACE (más detallado, menor prioridad)
+    DEBUG
+    INFO
+    WARN
+    ERROR (menos detallado, mayor prioridad).
+    -->
+    <!-- Ignorar este error -->
+    <root level="ERROR">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- Logger específico para Selenium WebDriver Event Listeners pesa mas que la configuracion global
+    <logger name="io.testsmith" level="ERROR" additivity="true">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    -->
+
+    <!-- Logger específico para WebDriverManager
+  <logger name="io.github.bonigarcia.wdm" level="ERROR" additivity="false">
+      <appender-ref ref="CONSOLE" />
+  </logger>
+    -->
+
 </configuration>

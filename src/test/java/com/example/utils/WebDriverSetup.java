@@ -4,15 +4,14 @@ import com.example.properties.EnvironmentProperties;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.testsmith.support.listeners.*;
-import com.example.utils.RommonSeleniumUtil;
+import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.slf4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
-import java.io.IOException;
 
 public abstract class WebDriverSetup {
 
@@ -22,6 +21,8 @@ public abstract class WebDriverSetup {
   public static WebDriver getDriver() {
     return driver.get();
   }
+
+  private static final Logger logger = org.slf4j.LoggerFactory.getLogger(WebDriverSetup.class);
 
   @BeforeClass
   public static void setup() {
@@ -37,7 +38,8 @@ public abstract class WebDriverSetup {
                   new HighlightElementsListener())
               .decorate(originalDriver));
     } else {
-      System.out.println("url is null");
+      logger.error("url is null");
+      
     }
   }
 
@@ -64,11 +66,12 @@ public abstract class WebDriverSetup {
           byte[] screenshot_bytes = screenshot.getScreenshotAs(OutputType.BYTES);
         scenario.attach(screenshot_bytes, "image/png", "Failure Screenshot");
       } else {
-        System.err.println("Driver does not support screenshots.");
+        logger.error("Driver does not support screenshots.");
+
       }
 
     } catch (Exception e) {
-      System.err.println("Failed to take screenshot: " + e.getMessage());
+      logger.error("Failed to take screenshot: " + e.getMessage());
       e.printStackTrace();
     }
   }

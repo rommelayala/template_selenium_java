@@ -34,16 +34,28 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.opentelemetry</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>3.0.0-beta1</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>2.0.9</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -182,9 +194,10 @@
                         <seleniumGrid>${seleniumGrid}</seleniumGrid>
                         <seleniumGridUrl>${seleniumGridUrl}</seleniumGridUrl>
                         <seleniumBrowser>${seleniumBrowser}</seleniumBrowser>
+                        <overwrite>true</overwrite>
                     </systemPropertyVariables>
                     <includes>
-                        <include>**/*Test.java</include>
+                        <include>**/*Test*.java</include>
                     </includes>
                     <parallel>classes</parallel>
                     <threadCount>4</threadCount>

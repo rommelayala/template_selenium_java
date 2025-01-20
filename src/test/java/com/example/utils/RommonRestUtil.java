@@ -2,19 +2,20 @@ package com.example.utils;
 
 import static org.hamcrest.CoreMatchers.*;
 
+import com.example.properties.EnvironmentProperties;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.assertj.core.api.Assertions;
+import org.slf4j.Logger;
 
 import java.util.Map;
 
 public class RommonRestUtil {
     private RequestSpecification RestRequest;
     private io.restassured.response.Response RestResponse;
-    private final Logger logger = LogManager.getLogger("com.privalia.qa.specs.CommonG");
+    private final Logger logger = org.slf4j.LoggerFactory.getLogger(RommonRestUtil.class);
     /**
      * Get the common logger.
      *
