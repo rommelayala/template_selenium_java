@@ -11,7 +11,7 @@
 
 --------------------------------------------- Features ---------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------
-✅ Configuracion de logs
+✅ Configuracion de logs con logback https://javatechonline.com/logback-xml-configuration-examples/
 incluir en el pom
 
 <dependency>
